@@ -625,6 +625,11 @@ public class DefaultRequestHandler implements RequestHandler {
                     });
         }
 
+        if (kind instanceof Task task) {
+            Integer historyLength = params.configuration() != null ? params.configuration().historyLength() : null;
+            kind = limitTaskHistory(task, historyLength);
+        }
+
         LOGGER.debug("Returning: {}", kind);
         return kind;
     }
