@@ -66,7 +66,6 @@ import org.a2aproject.sdk.spec.TaskNotFoundError;
 import org.a2aproject.sdk.spec.TaskPushNotificationConfig;
 import org.a2aproject.sdk.spec.TaskQueryParams;
 import org.a2aproject.sdk.spec.TaskState;
-import org.a2aproject.sdk.spec.TaskStatusUpdateEvent;
 import org.a2aproject.sdk.spec.UnsupportedOperationError;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -270,6 +269,7 @@ public class DefaultRequestHandler implements RequestHandler {
         this.requestContextBuilder = () -> new SimpleRequestContextBuilder(taskStore, false);
     }
 
+    @SuppressWarnings("NullAway.Init")
     @PostConstruct
     void initConfig() {
         agentCompletionTimeoutSeconds = Integer.parseInt(
